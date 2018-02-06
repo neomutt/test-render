@@ -2,6 +2,7 @@
 #define _COLOUR_H
 
 #include <stdbool.h>
+#include <stdio.h>
 
 struct AnsiColour
 {
@@ -21,8 +22,7 @@ struct RgbColour
   unsigned char blue;
 };
 
-union Colour
-{
+union Colour {
   struct AnsiColour ansi;
   struct PaletteColour pal;
   struct RgbColour rgb;
@@ -32,4 +32,3 @@ void print_colour(struct RgbColour *col);
 bool parse_colour(const char *str, size_t len, struct RgbColour *col);
 
 #endif /* _COLOUR_H */
-

@@ -1,6 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
-#include <string.h>
+#include <strings.h>
 #include <unistd.h>
 #include "colour.h"
 #include "mapping.h"
@@ -52,7 +52,6 @@ void print_colour(struct RgbColour *col)
 
   if (tty)
     printf("\033[0m");
-  printf("\n");
 }
 
 bool parse_hex3(const char *str, size_t len, struct RgbColour *col)

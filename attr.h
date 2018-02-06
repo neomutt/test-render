@@ -18,6 +18,6 @@
 
 void print_attr(unsigned int attr);
 bool parse_attr(const char *str, size_t len, unsigned short *attr);
+bool parse_attr_list(char *str, size_t len, unsigned short *attr);
 
 #endif /* _ATTR_H */
-
