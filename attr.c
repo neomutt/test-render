@@ -59,7 +59,7 @@ void print_ansi(const char *str, int attr)
   }
 }
 
-void print_attr(unsigned int attr)
+void attr_print(unsigned int attr)
 {
   attr &= ATTR_MASK;
   for (size_t i = 0; i < array_size(attr_list); i++)
@@ -74,7 +74,7 @@ void print_attr(unsigned int attr)
   }
 }
 
-bool parse_attr(const char *str, size_t len, unsigned short *attr)
+bool attr_parse(const char *str, size_t len, unsigned short *attr)
 {
   if (!str || (len == 0) || !attr)
     return false;
@@ -91,7 +91,7 @@ bool parse_attr(const char *str, size_t len, unsigned short *attr)
   return false;
 }
 
-bool parse_attr_list(char *str, size_t len, unsigned short *attr)
+bool attr_parse_list(char *str, size_t len, unsigned short *attr)
 {
   if (!str || (len == 0) || !attr)
     return false;
@@ -100,12 +100,12 @@ bool parse_attr_list(char *str, size_t len, unsigned short *attr)
   if (!str)
     return false;
 
-  if (!parse_attr(str, strlen(str), attr))
+  if (!attr_parse(str, strlen(str), attr))
     return false;
 
   while ((str = strtok(NULL, ",")) != NULL)
   {
-    if (!parse_attr(str, strlen(str), attr))
+    if (!attr_parse(str, strlen(str), attr))
       return false;
   }
 

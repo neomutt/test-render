@@ -6,13 +6,13 @@
 #include "highlight.h"
 #include "regex2.h"
 
-void test_attr(char *str)
+void attr_test(char *str)
 {
   printf("%s\n", str);
   unsigned short attr = 0;
-  if (parse_attr_list(str, strlen(str), &attr))
+  if (attr_parse_list(str, strlen(str), &attr))
   {
-    print_attr(attr);
+    attr_print(attr);
     printf("\n");
   }
   else
@@ -21,15 +21,15 @@ void test_attr(char *str)
   }
 }
 
-void test_colour(char *str)
+void colour_test(char *str)
 {
   printf("%s\n", str);
 
   struct RgbColour col = { 0 };
 
-  if (parse_colour(str, strlen(str), &col))
+  if (colour_parse(str, strlen(str), &col))
   {
-    print_colour(&col);
+    colour_print(&col);
     printf("\n");
   }
   else
@@ -38,23 +38,23 @@ void test_colour(char *str)
   }
 }
 
-void test_highlight(char *str)
+void highlight_test(char *str)
 {
   struct Highlight *hi = calloc(1, sizeof(*hi));
 
-  if (parse_highlight(str, strlen(str), hi))
+  if (highlight_parse(str, strlen(str), hi))
   {
-    print_highlight(hi);
+    highlight_print(hi);
   }
   else
   {
     printf("failed\n");
   }
 
-  free_highlight(hi);
+  highlight_free(hi);
 }
 
-void test_regex(char *str)
+void regex_test(char *str)
 {
   struct Regex *r = regex_new(str);
 
@@ -65,10 +65,10 @@ int main(int argc, char *argv[])
 {
   for (; argc > 1; argc--, argv++)
   {
-    // test_attr(argv[1]);
-    // test_colour(argv[1]);
-    test_highlight(argv[1]);
-    // test_regex(argv[1]);
+    // attr_test(argv[1]);
+    // colour_test(argv[1]);
+    highlight_test(argv[1]);
+    // regex_test(argv[1]);
   }
 
   return 0;

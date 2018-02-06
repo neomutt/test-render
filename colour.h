@@ -28,7 +28,7 @@ union Colour {
   struct RgbColour rgb;
 };
 
-void print_colour(struct RgbColour *col);
-bool parse_colour(const char *str, size_t len, struct RgbColour *col);
+void colour_print(struct RgbColour *col);
+bool colour_parse(const char *str, size_t len, struct RgbColour *col);
 
 #endif /* _COLOUR_H */

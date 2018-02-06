@@ -32,7 +32,7 @@ const char *get_object_name(int id)
   return NULL;
 }
 
-void print_highlight(struct Highlight *hi)
+void highlight_print(struct Highlight *hi)
 {
   if (!hi)
     return;
@@ -43,17 +43,17 @@ void print_highlight(struct Highlight *hi)
 
   printf("highlight %s ", name);
   printf("fg=");
-  print_colour(&hi->fg);
+  colour_print(&hi->fg);
   printf(" bg=");
-  print_colour(&hi->bg);
+  colour_print(&hi->bg);
   printf(" attr=");
-  print_attr(hi->attr);
+  attr_print(hi->attr);
   if (hi->rx && hi->rx->pattern)
     printf(" regex='%s'", hi->rx->pattern);
   printf("\n");
 }
 
-bool parse_highlight(char *str, size_t len, struct Highlight *hi)
+bool highlight_parse(char *str, size_t len, struct Highlight *hi)
 {
   if (!str)
     return false;
@@ -89,19 +89,19 @@ bool parse_highlight(char *str, size_t len, struct Highlight *hi)
     if (strncmp(str, "fg=", 3) == 0)
     {
       str += 3;
-      if (!parse_colour(str, strlen(str), &hi->fg))
+      if (!colour_parse(str, strlen(str), &hi->fg))
         return false;
     }
     else if (strncmp(str, "bg=", 3) == 0)
     {
       str += 3;
-      if (!parse_colour(str, strlen(str), &hi->bg))
+      if (!colour_parse(str, strlen(str), &hi->bg))
         return false;
     }
     else if (strncmp(str, "attr=", 5) == 0)
     {
       str += 5;
-      if (!parse_attr_list(str, strlen(str), &hi->attr))
+      if (!attr_parse_list(str, strlen(str), &hi->attr))
         return false;
     }
     else if (strncmp(str, "regex=", 6) == 0)
@@ -120,7 +120,7 @@ bool parse_highlight(char *str, size_t len, struct Highlight *hi)
   return true;
 }
 
-void free_highlight(struct Highlight *hi)
+void highlight_free(struct Highlight *hi)
 {
   if (!hi)
     return;

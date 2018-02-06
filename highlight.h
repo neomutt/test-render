@@ -16,8 +16,8 @@ struct Highlight
   struct Regex *rx;
 };
 
-void free_highlight(struct Highlight *hi);
-bool parse_highlight(char *str, size_t len, struct Highlight *hi);
-void print_highlight(struct Highlight *hi);
+void highlight_free(struct Highlight *hi);
+bool highlight_parse(char *str, size_t len, struct Highlight *hi);
+void highlight_print(struct Highlight *hi);
 
 #endif /* _HIGHLIGHT_H */

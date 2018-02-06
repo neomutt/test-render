@@ -16,8 +16,8 @@
 
 #define ATTR_MASK     ((1 << 8) - 1)
 
-void print_attr(unsigned int attr);
-bool parse_attr(const char *str, size_t len, unsigned short *attr);
-bool parse_attr_list(char *str, size_t len, unsigned short *attr);
+void attr_print(unsigned int attr);
+bool attr_parse(const char *str, size_t len, unsigned short *attr);
+bool attr_parse_list(char *str, size_t len, unsigned short *attr);
 
 #endif /* _ATTR_H */

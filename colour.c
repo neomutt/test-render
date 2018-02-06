@@ -31,7 +31,7 @@ struct Mapping colour_list[] =
 };
 // clang-format on
 
-void print_colour(struct RgbColour *col)
+void colour_print(struct RgbColour *col)
 {
   if (!col)
     return;
@@ -237,7 +237,7 @@ bool parse_colour_name(const char *str, size_t len, struct RgbColour *col)
   return false;
 }
 
-bool parse_colour(const char *str, size_t len, struct RgbColour *col)
+bool colour_parse(const char *str, size_t len, struct RgbColour *col)
 {
   if (!str || (len == 0) || !col)
     return false;
