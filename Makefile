@@ -65,9 +65,10 @@ distclean: clean
 	$(Q)$(RM) $(DEPDIR) $(OBJDIR) tags
 
 test:	all
-	./main '#aa8845'
 
 	# ./main strike,bold,uri
+	# ./main blue color209 '#309' '#aa8845'
+	# ./main "highlight apple fg=#f4f640 bg=#80c000 attr=underline,italic,uri"
 
 valgrind:	all
 	@for i in c f m q s; do \

@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <strings.h>
 #include "highlight.h"
 #include "attr.h"
 #include "colour.h"
 #include "mapping.h"
+#include "regex2.h"
 
 // clang-format off
 #define OBJECT_APPLE  1 
@@ -46,6 +48,8 @@ void print_highlight(struct Highlight *hi)
   print_colour(&hi->bg);
   printf(" attr=");
   print_attr(hi->attr);
+  if (hi->rx && hi->rx->pattern)
+    printf(" regex='%s'", hi->rx->pattern);
   printf("\n");
 }
 
@@ -100,6 +104,13 @@ bool parse_highlight(char *str, size_t len, struct Highlight *hi)
       if (!parse_attr_list(str, strlen(str), &hi->attr))
         return false;
     }
+    else if (strncmp(str, "regex=", 6) == 0)
+    {
+      str += 6;
+      hi->rx = regex_new(str);
+      if (!hi->rx)
+        return false;
+    }
     else
     {
       return false;
@@ -107,4 +118,13 @@ bool parse_highlight(char *str, size_t len, struct Highlight *hi)
   }
 
   return true;
+}
+
+void free_highlight(struct Highlight *hi)
+{
+  if (!hi)
+    return;
+
+  regex_free(hi->rx);
+  free(hi);
 }

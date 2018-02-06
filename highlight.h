@@ -13,8 +13,10 @@ struct Highlight
   struct RgbColour fg;
   struct RgbColour bg;
   unsigned short attr;
+  struct Regex *rx;
 };
 
+void free_highlight(struct Highlight *hi);
 bool parse_highlight(char *str, size_t len, struct Highlight *hi);
 void print_highlight(struct Highlight *hi);
 

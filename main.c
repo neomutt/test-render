@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "attr.h"
 #include "colour.h"
 #include "highlight.h"
+#include "regex2.h"
 
 void test_attr(char *str)
 {
@@ -38,16 +40,25 @@ void test_colour(char *str)
 
 void test_highlight(char *str)
 {
-  struct Highlight hi = { 0 };
+  struct Highlight *hi = calloc(1, sizeof(*hi));
 
-  if (parse_highlight(str, strlen(str), &hi))
+  if (parse_highlight(str, strlen(str), hi))
   {
-    print_highlight(&hi);
+    print_highlight(hi);
   }
   else
   {
     printf("failed\n");
   }
+
+  free_highlight(hi);
+}
+
+void test_regex(char *str)
+{
+  struct Regex *r = regex_new(str);
+
+  regex_free(r);
 }
 
 int main(int argc, char *argv[])
@@ -57,6 +68,7 @@ int main(int argc, char *argv[])
     // test_attr(argv[1]);
     // test_colour(argv[1]);
     test_highlight(argv[1]);
+    // test_regex(argv[1]);
   }
 
   return 0;
