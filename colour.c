@@ -5,6 +5,7 @@
 #include "colour.h"
 #include "mapping.h"
 
+// clang-format off
 #define ANSI_BLACK   0
 #define ANSI_RED     1
 #define ANSI_GREEN   2
@@ -14,7 +15,6 @@
 #define ANSI_CYAN    6
 #define ANSI_WHITE   7
 
-// clang-format off
 struct Mapping colour_list[] =
 {
   { "black",     ANSI_BLACK   },
@@ -257,4 +257,3 @@ bool parse_colour(const char *str, size_t len, struct RgbColour *col)
 
   return false;
 }
-
