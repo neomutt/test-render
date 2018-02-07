@@ -19,5 +19,6 @@
 void attr_print(unsigned int attr);
 bool attr_parse(const char *str, size_t len, unsigned short *attr);
 bool attr_parse_list(char *str, size_t len, unsigned short *attr);
+void attr_test(char *str);
 
 #endif /* _ATTR_H */

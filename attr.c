@@ -111,3 +111,18 @@ bool attr_parse_list(char *str, size_t len, unsigned short *attr)
 
   return true;
 }
+
+void attr_test(char *str)
+{
+  printf("%s\n", str);
+  unsigned short attr = 0;
+  if (attr_parse_list(str, strlen(str), &attr))
+  {
+    attr_print(attr);
+    printf("\n");
+  }
+  else
+  {
+    printf("failed\n");
+  }
+}

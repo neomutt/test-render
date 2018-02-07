@@ -41,3 +41,10 @@ struct Regex *regex_new(const char *pat)
   r->not = false;
   return r;
 }
+
+void regex_test(char *str)
+{
+  struct Regex *r = regex_new(str);
+
+  regex_free(r);
+}

@@ -19,5 +19,6 @@ struct Highlight
 void highlight_free(struct Highlight *hi);
 bool highlight_parse(char *str, size_t len, struct Highlight *hi);
 void highlight_print(struct Highlight *hi);
+void highlight_test(char *str);
 
 #endif /* _HIGHLIGHT_H */

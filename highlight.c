@@ -128,3 +128,19 @@ void highlight_free(struct Highlight *hi)
   regex_free(hi->rx);
   free(hi);
 }
+
+void highlight_test(char *str)
+{
+  struct Highlight *hi = calloc(1, sizeof(*hi));
+
+  if (highlight_parse(str, strlen(str), hi))
+  {
+    highlight_print(hi);
+  }
+  else
+  {
+    printf("failed\n");
+  }
+
+  highlight_free(hi);
+}

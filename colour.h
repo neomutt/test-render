@@ -30,5 +30,6 @@ union Colour {
 
 void colour_print(struct RgbColour *col);
 bool colour_parse(const char *str, size_t len, struct RgbColour *col);
+void colour_test(char *str);
 
 #endif /* _COLOUR_H */

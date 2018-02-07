@@ -13,5 +13,6 @@ struct Regex
 
 void regex_free(struct Regex *r);
 struct Regex *regex_new(const char *pat);
+void regex_test(char *str);
 
 #endif /* _REGEX2_H */

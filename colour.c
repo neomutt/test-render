@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 #include <strings.h>
 #include <unistd.h>
 #include "colour.h"
@@ -255,4 +256,21 @@ bool colour_parse(const char *str, size_t len, struct RgbColour *col)
     return true;
 
   return false;
+}
+
+void colour_test(char *str)
+{
+  printf("%s\n", str);
+
+  struct RgbColour col = { 0 };
+
+  if (colour_parse(str, strlen(str), &col))
+  {
+    colour_print(&col);
+    printf("\n");
+  }
+  else
+  {
+    printf("failed\n");
+  }
 }
