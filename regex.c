@@ -34,7 +34,11 @@ struct Regex *regex_new(const char *pat)
 
   struct Regex *r = calloc(1, sizeof(*r));
   if (!r)
+  {
+    regfree(rx);
+    free(rx);
     return NULL;
+  }
 
   r->pattern = strdup(pat);
   r->rx = rx;
