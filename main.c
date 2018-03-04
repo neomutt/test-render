@@ -10,9 +10,9 @@ int main(int argc, char *argv[])
 {
   for (; argc > 1; argc--, argv++)
   {
-    attr_test(argv[1]);
-    colour_test(argv[1]);
-    regex_test(argv[1]);
+    // attr_test(argv[1]);
+    // colour_test(argv[1]);
+    // regex_test(argv[1]);
     highlight_test(argv[1]);
   }
 

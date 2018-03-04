@@ -10,6 +10,7 @@ static const struct Mapping attr_list[] = {
   { "none",          ATTR_NONE      },
   { "normal",        ATTR_NONE      },
   { "bold",          ATTR_BOLD      },
+  { "blink",         ATTR_BLINK     },
   { "standout",      ATTR_BOLD      },
   { "conceal",       ATTR_CONCEAL   },
   { "faint",         ATTR_FAINT     },
@@ -28,7 +29,9 @@ void print_ansi(const char *str, int attr)
     return;
 
   int code = 0;
-  if (attr == ATTR_BOLD)
+  if (attr == ATTR_BLINK)
+    code = 5;
+  else if (attr == ATTR_BOLD)
     code = 1;
   else if (attr == ATTR_CONCEAL)
     code = 8;
