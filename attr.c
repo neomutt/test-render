@@ -54,7 +54,7 @@ void print_ansi(const char *str, int attr)
   }
   else if (code == 10)
   {
-    printf("\033]8;;%s\007%s\033]8;;\007", str, str);
+    printf("\033]8;;%s\007%s\033]8;;\007", "https://www.example.com", str);
   }
   else
   {
